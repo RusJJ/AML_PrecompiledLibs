@@ -7,3 +7,5 @@ wolfSSL license: https://github.com/wolfSSL/wolfssl/blob/master/COPYING
 Zlib license: https://github.com/madler/zlib/blob/master/LICENSE
 
 Dobby license: https://github.com/jmpews/Dobby/blob/master/LICENSE
+
+GlossHook: unlicensed yet, ask @XMDS for an access
