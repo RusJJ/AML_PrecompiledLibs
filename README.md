@@ -8,4 +8,4 @@ Zlib license: https://github.com/madler/zlib/blob/master/LICENSE
 
 Dobby license: https://github.com/jmpews/Dobby/blob/master/LICENSE
 
-GlossHook: unlicensed yet, ask @XMDS for an access
+GlossHook: https://github.com/XMDS/GlossHook/blob/main/LICENSE

@@ -75,7 +75,7 @@ extern "C" {
 
 	uintptr_t GlossSymbol(gloss_lib handle, const char* name, size_t* sym_size);
 	uintptr_t GlossSymbolEx(uintptr_t libAddr, const char* name, size_t* sym_size);
-	const char* GlossAddr(uintptr_t sym_addr, size_t* sym_size);
+	const char* GlossAddr(uintptr_t libAddr, uintptr_t* sym_addr, size_t* sym_size);
 
 	const char* GlossGetLibMachine(const char* libName);
 	const int GlossGetLibBit(const char* libName);
@@ -114,7 +114,7 @@ extern "C" {
 	typedef void (*GlossHookPatchCallback)(gloss_reg* regs, void* hook);
 	void* GlossHookPatch(void* patch_addr, GlossHookPatchCallback new_func, bool is_short_func, i_set mode);
 
-	void* GlossHookRedirect(void* redirect_addr, void* new_addr, i_set mode);
+	void* GlossHookRedirect(void* redirect_addr, void* new_addr, bool is_short_func, i_set mode);
 
 	// got hook
 	void* GlossGotHook(void* got_addr, void* new_func, void** old_func);
@@ -232,6 +232,9 @@ extern "C" {
 			const int CheckAbsoluteJump(uintptr_t addr);
 			const int CheckRelativeJump(uintptr_t addr);
 
+			enum class branchs { B_COND, B_16, B_32, BL, BLX, MAX_BRANCH };
+			const branchs GetBranch(uintptr_t addr, i_set mode);
+
 #ifdef __arm__
 
 			bool IsThumb32(uint32_t addr);
@@ -274,6 +277,7 @@ extern "C" {
 			const uint32_t MakeArm64CB(uint64_t addr, uint64_t dest, uint8_t reg, bool is_cbnz, bool is64);
 			int8_t MakeArm64AbsoluteJump(uint64_t addr, uint64_t dest, gloss_reg::e_reg reg = gloss_reg::e_reg::X17);
 			int8_t MakeArm64AbsoluteJump32(uint64_t addr, uint64_t dest, gloss_reg::e_reg reg = gloss_reg::e_reg::X17);
+			int8_t MakeArm64AbsoluteJumpRet(uint64_t addr, uint64_t dest, gloss_reg::e_reg reg = gloss_reg::e_reg::X17);
 
 			uint64_t GetArm64BranchDestination(uint64_t addr);
 
