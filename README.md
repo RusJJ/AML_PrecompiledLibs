@@ -6,8 +6,6 @@ wolfSSL license: https://github.com/wolfSSL/wolfssl/blob/master/COPYING
 
 Zlib license: https://github.com/madler/zlib/blob/master/LICENSE
 
-Dobby license: https://github.com/jmpews/Dobby/blob/master/LICENSE
-
 GlossHook: https://github.com/XMDS/GlossHook/blob/main/LICENSE
 
 xUnwind: https://github.com/hexhacking/xUnwind/blob/master/LICENSE
